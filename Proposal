@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taraaa ❤️</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial, sans-serif;
+  background:#ffe6ec;
+  overflow:hidden;
+}
+
+.box{
+  text-align:center;
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+h1{
+  color:#ff2e63;
+}
+
+button{
+  padding:12px 24px;
+  font-size:18px;
+  margin:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff2e63;
+  color:white;
+}
+
+#no{
+  position:absolute;
+  background:#888;
+  color:white;
+}
+
+/* floating hearts */
+.heart{
+  position:absolute;
+  color:#ff6b81;
+  font-size:20px;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>Taraaa… will you be my Valentine? 💘</h1>
+<button id="yes">Yes ❤️</button>
+<button id="no">No 😅</button>
+</div>
+
+<script>
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+
+/* YES click */
+yesBtn.onclick=()=>{
+  alert("Yayyy Taraaa! 💖 You just made my day 🥰");
+};
+
+/* Move NO button */
+function moveButton(){
+  const x=Math.random()*(window.innerWidth-noBtn.clientWidth);
+  const y=Math.random()*(window.innerHeight-noBtn.clientHeight);
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+}
+
+/* Desktop hover */
+noBtn.addEventListener("mouseover",moveButton);
+
+/* Mobile touch */
+noBtn.addEventListener("touchstart",moveButton);
+
+/* Floating hearts generator */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(15+Math.random()*25)+"px";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
+
